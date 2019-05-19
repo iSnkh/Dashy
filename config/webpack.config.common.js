@@ -9,13 +9,13 @@ const isDev                = process.env.NODE_ENV === 'development';
 const webpackConfig = {
     entry: {
         polyfill: '@babel/polyfill',
-        main: helpers.root('src', 'app'),
+        main: helpers.root('app', 'app'),
     },
     resolve: {
         extensions: [ '.js', '.json', '.vue' ],
         alias: {
             'vue$': isDev ? 'vue/dist/vue.runtime.js' : 'vue/dist/vue.runtime.min.js',
-            '@': helpers.root('src')
+            '@': helpers.root('app')
         }
     },
     module: {
@@ -23,12 +23,12 @@ const webpackConfig = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
-                include: [ helpers.root('src') ]
+                include: [ helpers.root('app') ]
             },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                include: [ helpers.root('src') ]
+                include: [ helpers.root('app') ]
             },
             {
                 test: /\.css$/,
